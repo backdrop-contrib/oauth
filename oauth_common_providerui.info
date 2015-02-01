@@ -4,4 +4,7 @@ package = "OAuth"
 
 dependencies[] = oauth_common
 
-core = 7.x
+backdrop = 1.x
+
+
+
