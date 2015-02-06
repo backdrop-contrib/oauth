@@ -3,18 +3,9 @@
  * @file
  * Installation and schema related functions for the OAuth module
  */
- 
-function oauth_common_install() {
- // Save all settings to a file called 'my_module.settings'
-$config = config('oauth_common.settings');
-$config->set('oauth_common_enable_provider', TRUE);
-$config->set('oauth_common_request_token_lifetime', 7200);
-$config->set('oauth_common_login_path','OAUTH_COMMON_LOGIN_PATH');
-$config->save();
-}
- 
+  
  /**
-* Move oauth_common settings from variables to config.
+* Move oauth_common settings from Drupal variables to Backdrop config.
 */
 function oauth_common_update_1000() {
 // Migrate variables to config.
@@ -46,7 +37,7 @@ function oauth_common_requirements($phase) {
   if (!$curl_available) {
     $requirements['oauth_common_curl'] += array(
       'severity' => REQUIREMENT_ERROR,
-      'description' => $t("DrupalOAuthClient requires the PHP <a href='!curl_url'>cURL</a> library.",
+      'description' => $t("BackdropOAuthClient requires the PHP <a href='!curl_url'>cURL</a> library.",
         array('!curl_url' => 'http://php.net/manual/en/curl.setup.php')),
     );
   }
