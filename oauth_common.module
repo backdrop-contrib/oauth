@@ -613,3 +613,31 @@ function _oauth_common_version() {
   }
   return $version;
 }
+
+/**
+ * Implements hook_autoload_info().
+ */
+function oauth_common_autoload_info()
+  return array(
+      'OAuthException' => 'lib/OAuth.php',
+      'OAuthConsumer' => 'lib/OAuth.php',
+      'OAuthToken' => 'lib/OAuth.php',
+      'OAuthSignatureMethod' => 'lib/OAuth.php',
+      'OAuthSignatureMethod_HMAC' => 'includes/OAuthSignatureMethod_HMAC.inc',
+      'OAuthSignatureMethod_HMAC_SHA1' => 'lib/OAuth.php',
+      'OAuthSignatureMethod_PLAINTEXT' => 'lib/OAuth.php',
+      'OAuthSignatureMethod_RSA_SHA1' => 'lib/OAuth.php',
+      'OAuthRequest' => 'lib/OAuth.php',
+      'OAuthServer' => 'lib/OAuth.php',
+      'OAuthDataStore' => 'lib/OAuth.php',
+      'OAuthUtil' => 'lib/OAuth.php',
+      'BackdropOAuthServer' => 'includes/BackdropOAuthServer.inc',
+      'BackdropOAuthDataStore' => 'includes/BackdropOAuthDataStore.inc',
+      'BackdropOAuthRequest' => 'includes/BackdropOAuthRequest.inc',
+      'BackdropOAuthToken' => 'includes/BackdropOAuthToken.inc',
+      'BackdropOAuthConsumer' => 'includes/BackdropOAuthConsumer.inc',
+      'BackdropOAuthClient' => 'includes/BackdropOAuthClient.inc',
+    );
+}
+
+
