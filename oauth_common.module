@@ -618,6 +618,7 @@ function _oauth_common_version() {
  * Implements hook_autoload_info().
  */
 function oauth_common_autoload_info()
+{
   return array(
       'OAuthException' => 'lib/OAuth.php',
       'OAuthConsumer' => 'lib/OAuth.php',
