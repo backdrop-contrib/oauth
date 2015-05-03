@@ -2,9 +2,7 @@ name = OAuth
 description = Provides OAuth functionality
 configure = admin/config/services/oauth
 package = "OAuth"
-
-recommends[] = ctools
-suggests[] = inputstream
-
 backdrop = 1.x
+version = 1.x-3.2.0
+type = module
 
