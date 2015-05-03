@@ -15,7 +15,7 @@ correctly.
 
 <h2>Status</h2>
 
-This Backdrop version of a Drupal contributed module is under development.
+This is an initial Backdrop version of the Drupal contributed module version 7.x-3.2.
 
 
 <h2>Installation</h2>
