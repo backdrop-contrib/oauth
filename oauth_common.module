@@ -96,7 +96,7 @@ function oauth_common_menu() {
   $menu['admin/config/services/oauth'] = array(
     'title' => 'OAuth',
     'description' => 'Settings for OAuth',
-    'page callback' => 'drupal_get_form',
+    'page callback' => 'backdrop_get_form',
     'page arguments' => array('_oauth_common_admin'),
     'type' => MENU_NORMAL_ITEM,
   ) + $admin_base;
@@ -104,7 +104,7 @@ function oauth_common_menu() {
   $menu['admin/config/services/oauth/settings'] = array(
     'title' => 'Settings',
     'description' => 'Settings for OAuth',
-    'page callback' => 'drupal_get_form',
+    'page callback' => 'backdrop_get_form',
     'page arguments' => array('_oauth_common_admin'),
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => 0,
@@ -127,7 +127,7 @@ function oauth_common_menu() {
 
   // The page a user gets sent to to authorize a request token.
   $menu['oauth/authorize'] = array(
-    'page callback' => 'drupal_get_form',
+    'page callback' => 'backdrop_get_form',
     'page arguments' => array('oauth_common_form_authorize'),
   ) + $provider_base;
 
@@ -175,7 +175,7 @@ function oauth_common_menu() {
  * @param string $key
  */
 function oauth_common_consumer_load($csid) {
-  $consumer = $csid ? DrupalOAuthConsumer::loadById($csid, TRUE) : FALSE;
+  $consumer = $csid ? BackdropOAuthConsumer::loadById($csid, TRUE) : FALSE;
   if (!$consumer) {
     $consumer = FALSE;
   }
@@ -188,7 +188,7 @@ function oauth_common_consumer_load($csid) {
  * @param string $key
  */
 function oauth_common_provider_token_load($tid) {
-  $token = $tid ? DrupalOAuthToken::loadByID($tid) : FALSE;
+  $token = $tid ? BackdropOAuthToken::loadByID($tid) : FALSE;
   if (!$token) {
     $token = FALSE;
   }
@@ -209,7 +209,7 @@ function oauth_common_cron() {
     ->condition($token_condition)
     ->execute();
 
-  // Should 300 be overriden in DrupalOAuthServer and made configurable?
+  // Should 300 be overriden in BackdropOAuthServer and made configurable?
   db_delete('oauth_common_nonce')
     ->condition('timestamp', REQUEST_TIME - 300, '<')
     ->execute();
@@ -347,7 +347,7 @@ function _oauth_common_user_access($user, $permission = NULL) {
  * granted if the user has the 'administer consumers' permission or may
  * edit the account connected to the consumer.
  *
- * @param DrupalOAuthConsumer $consumer
+ * @param BackdropOAuthConsumer $consumer
  * @return bool
  */
 function oauth_common_can_edit_consumer($consumer) {
@@ -402,7 +402,7 @@ function _oauth_common_always_true() {
  * Access callback that checks if a user may create authorizations in the
  * consumers context.
  *
- * @param DrupalOAuthConsumer $consumer
+ * @param BackdropOAuthConsumer $consumer
  * @return bool
  */
 function oauth_common_can_authorize_consumer($consumer) {
@@ -431,7 +431,7 @@ function oauth_commmon_is_provider() {
  *  the request token.
  */
 function oauth_common_get_request_token($consumer_token, $request_endpoint = '/oauth/request_token', $authorize_endpoint = '/oauth/authorize') {
-  $client = new DrupalOAuthClient($consumer_token);
+  $client = new BackdropOAuthClient($consumer_token);
   $request_token = $client->getRequestToken($request_endpoint);
   $request_token->write();
   return $client->getAuthorizationUrl($authorize_endpoint);
@@ -456,7 +456,7 @@ function oauth_common_get_user_provider_tokens($uid) {
     ->execute();
 
   $tokens = array();
-  while ($token = DrupalOAuthToken::fromResult($res)) {
+  while ($token = BackdropOAuthToken::fromResult($res)) {
     $tokens[] = $token;
   }
   return $tokens;
@@ -511,14 +511,14 @@ function oauth_common_context_from_request($request) {
   $token_key = $request->get_parameter('oauth_token');
 
   if (empty($consumer_key) && !empty($token_key)) {
-    $token = DrupalOAuthToken::loadByKey($token_key, FALSE, OAUTH_COMMON_TOKEN_TYPE_REQUEST);
+    $token = BackdropOAuthToken::loadByKey($token_key, FALSE, OAUTH_COMMON_TOKEN_TYPE_REQUEST);
     if ($token) {
       $consumer = $token->consumer;
     }
   }
 
   if (!empty($consumer_key)) {
-    $consumer = DrupalOAuthConsumer::loadProviderByKey($consumer_key);
+    $consumer = BackdropOAuthConsumer::loadProviderByKey($consumer_key);
   }
 
   if (!empty($consumer)) {
@@ -549,7 +549,7 @@ function oauth_common_context_load_all() {
  */
 function oauth_common_context_save($context) {
   $update = (isset($context->cid)) ? array('cid') : array();
-  drupal_write_record('oauth_common_context', $context, $update);
+  backdrop_write_record('oauth_common_context', $context, $update);
 }
 
 /**

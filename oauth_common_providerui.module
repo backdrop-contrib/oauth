@@ -53,7 +53,7 @@ function oauth_common_providerui_menu() {
 
   $menu['admin/config/services/oauth/%oauth_common_context/export'] = array(
     'title'          => 'Export context',
-    'page callback'  => 'drupal_get_form',
+    'page callback'  => 'backdrop_get_form',
     'page arguments' => array('oauth_common_export_context', 4),
     'type'           => MENU_LOCAL_TASK,
     'weight'         => 20,
@@ -61,7 +61,7 @@ function oauth_common_providerui_menu() {
 
   $menu['admin/config/services/oauth/%oauth_common_context/delete'] = array(
     'title'          => 'Delete context',
-    'page callback'  => 'drupal_get_form',
+    'page callback'  => 'backdrop_get_form',
     'page arguments' => array('oauth_common_delete_confirm_context', 4),
     'type'           => MENU_CALLBACK,
   ) + $admin_base;
@@ -94,7 +94,7 @@ function oauth_common_providerui_menu() {
 
   $menu['user/%user/oauth/authorizations/%oauth_common_provider_token'] = array(
     'title' => 'Edit authorization',
-    'page callback' => 'drupal_get_form',
+    'page callback' => 'backdrop_get_form',
     'page arguments' => array('oauth_common_form_authorization', 4),
     'access callback' => '_oauth_common_user_access',
     'access arguments' => array(1, 'oauth authorize any consumers'),
@@ -104,7 +104,7 @@ function oauth_common_providerui_menu() {
 
   $menu['user/%user/oauth/authorizations/%oauth_common_provider_token/delete'] = array(
     'title' => 'Delete authorization',
-    'page callback' => 'drupal_get_form',
+    'page callback' => 'backdrop_get_form',
     'page arguments' => array('oauth_common_form_authorization_delete', 1, 4),
     // We always want to allow the user to delete a authorization, that
     // shouldn't be a permission that can be rescinded.
@@ -150,7 +150,7 @@ function oauth_common_providerui_menu() {
 
   $menu['user/%user/oauth/consumer/%oauth_common_consumer/delete'] = array(
     'title' => 'Delete consumer',
-    'page callback' => 'drupal_get_form',
+    'page callback' => 'backdrop_get_form',
     'page arguments' => array('oauth_common_form_consumer_delete', 4),
     'access callback' => 'oauth_common_can_edit_consumer',
     'access arguments' => array(4),
