@@ -1,4 +1,4 @@
-<h1>OAuth</h1>
+# OAuth
 
 OAuth implements the OAuth classes for use with Drupal and acts as a support
 module for other modules that wish to use OAuth.
@@ -13,12 +13,13 @@ The callback to be used is /oauth/authorized/% where % is the id of the consumer
 used by the client. We need the id of the consumer to be able to find the token
 correctly.
 
-<h2>Status</h2>
+## Status
 
-This is an initial Backdrop version of the Drupal contributed module version 7.x-3.2.
+This is an incomplete Backdrop version of the Drupal contributed module version 7.x-3.3.
 
 
-<h2>Installation</h2>
+
+## Installation
 
 Install this module using the official Backdrop CMS instructions at https://backdropcms.org/guide/modules
 
@@ -26,24 +27,24 @@ Visit the configuration page under Administration > Configuration > Category > O
 and enter the required information.
 
 
-<h2>License</h2>
+## License
 
 This project is GPL v2 software. See the LICENSE.txt file in this directory for complete text.
 
-<h2>Current Maintainers</h2>
+## Current Maintainers
 
-<h3>For Drupal:</h3>
-Juan Pablo Novillo Requena (juampy)
-Kyle Browning (kylebrowning)
-jobeirne
-Pelle Wessman (voxpelli)
-Hugo Wetterberg
+### For Drupal:
++ Juan Pablo Novillo Requena (juampy)
++ Kyle Browning (kylebrowning)
++ jobeirne
++ Pelle Wessman (voxpelli)
++ Hugo Wetterberg
 
-<h3>Port to Backdrop:</h3>
-Graham Oliver github.com/Graham-72
+### Port to Backdrop:
++ Graham Oliver github.com/Graham-72
 
 
-<h2>Credits</h2>
+##Credits
 The Drupal module has been sponsored by Good Old, Mindpark and Lullabot.
 
 
