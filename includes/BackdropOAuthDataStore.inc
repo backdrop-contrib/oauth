@@ -108,6 +108,7 @@ class BackdropOAuthDataStore extends OAuthDataStore {
       'type'    => OAUTH_COMMON_TOKEN_TYPE_REQUEST,
       'uid'     => 0,
       'expires' => REQUEST_TIME + config_get('oauth.settings', 'oauth_common_request_token_lifetime'),
+      'callback_url' => $callback,
     ));
     $token->write();
     return $token;

@@ -3,6 +3,7 @@
 class BackdropOAuthToken extends OAuthToken {
   public $tid = 0;
   public $expires = 0;
+  public $callback_url = "";
   public $type = OAUTH_COMMON_TOKEN_TYPE_REQUEST;
   public $uid = 0;
 
@@ -83,6 +84,7 @@ class BackdropOAuthToken extends OAuthToken {
       'expires'   => $this->expires,
       'type'      => $this->type,
       'uid'       => $this->uid,
+      'callback_url' => $this->callback_url,
     );
 
     if ($update) {
